@@ -1,32 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="How to use protected routes in React.JS">
+    <meta
+      name="description"
+      content="How to use protected routes in React.JS"
+    />
 
-    <meta name="keywords" content="React.JS, JavaScript, Routes, React Router, Protected, SPA, Library, Frontend">
+    <meta
+      name="keywords"
+      content="React.JS, JavaScript, Routes, React Router, Protected, SPA, Library, Frontend, PWA, Highlight.JS, code"
+    />
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#000000" />
+    
 
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <meta name="author" content="Aman Bhardwaj">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 
-    <title>React.JS Mastery | JavaScript</title>
-    <link rel="icon" href="./React-icon.svg">
+    <meta name="author" content="Aman Bhardwaj" />
+
+    <title>SEO | Highlight.JS | PWA</title>
+
+    <link rel="manifest" href="./manifest.json" />
+
+    <link rel="icon" href="./React-icon.svg" />
+
+    <link rel="apple-touch-icon" href="./React-icon.svg" />
+
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.0/styles/atom-one-dark.min.css">
+
+    <script>
+      if('serviceWorker' in navigator){
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceworker.js').catch(err => console.error(err));
+        })
+      }
+    </script>
+
   </head>
-  <style>
-    body {
-      background-color: #ccc;
-    }
-  </style>
   <body>
-      <img src="./images/react-code.jpg" width="25%" alt="">
-      <img src="./images/react-code-min.jpg" width="25%" alt="react js code">
+    <h1>SEO | Highlight.JS | React.JS</h1>
+    <div class="container">
+    <pre>
+      <code class="js">
+// Private Route In React.JS | Redux
+
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
+
+const PrivateRoute = ({ authState, authState: { isAuthenticated } , component: Component, ...rest }) => {
+
+  return (
+    <Route {...rest} 
+    render={props => !isAuthenticated ? <Redirect to="/"/> 
+    : <Component {...props}/>}/> 
+  )
+}
+
+PrivateRoute.propTypes = {
+  authState: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+  authState: state.AuthState
+})
+
+export default connect(mapStateToProps, {})(PrivateRoute)
+      </code>
+    </pre>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
